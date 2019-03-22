@@ -1,4 +1,4 @@
-Songanizer, a music player web app based on the Youtube API. Web client built using React/Redux and API built using Express/Node/MongoDB. 
+Songanizer, a music player web app based on the Youtube API. Web client built using React/Redux; API built using Express/Node/MongoDB. 
 
 ## Running Locally
 
