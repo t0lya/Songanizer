@@ -1,0 +1,27 @@
+$pale-sky: #6b717f;
+$color-background: darken($pale-sky, 15) ;
+
+h1, h2, h3, h4, p, a, div {
+	color: #FFF;
+}
+
+body {
+    padding-top: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 100px;
+    background-color: $color-background;
+}
+
+.jumbotron {
+    max-width: 50rem;
+}
+
+.track-title {
+    max-width: 600px;
+    width: 50%;
+}
+
+.search-field {
+    min-width: 300px;
+}

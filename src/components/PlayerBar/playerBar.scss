@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.media-player {
+  width: 100%;
+  position: relative;
+
+  // hide native controls
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+}
+
+.media-controls {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #282F31;
+  color: #fff;
+
+  svg, path, polygon {
+    transform-origin: 50% 50%;
+  }
+
+  .media-player--fullscreen & {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    // push controls above fullscreen video
+    z-index: 2147483647;
+  }
+}
+
+.media-controls--full {
+  flex-direction: column;
+
+  .media-control-group--seek {
+    width: 100%;
+    margin: 12px 0;
+  }
+}
+
+.media-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.media-control-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.media-control-group--title {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.media-control-group--seek {
+  flex: 1;
+}
+
+.media-control {
+  margin: 0 12px;
+}
+
+.media-control--progress {
+  -webkit-appearance: none;
+  width: calc(100% - 24px);
+  height: 3px;
+  margin: 0 12px;
+  border: 0;
+  position: absolute;
+  top: 7px;
+  left: 12px;
+
+  // bar
+  background-color: #373d3f;
+  &::-webkit-progress-bar {
+    background-color: #373d3f;
+  }
+
+  // progress
+  color: lighten(#373d3f, 5%); // IE
+  &::-moz-progress-bar {
+    background-color: lighten(#373d3f, 5%);
+  }
+  &::-webkit-progress-value {
+    background-color: lighten(#373d3f, 5%);
+  }
+}
+
+.media-control--seekbar {
+  width: calc(100% - 24px);
+  z-index: 5;
+}
+
+.media-control--volume {
+  width: calc(100% - 24px);
+  max-width: 120px;
+}
+
+.media-control--prev-track {
+  margin-right: 6px;
+}
+
+.media-control--next-track {
+  margin-left: 6px;
+}
+
+.media-playlist-header {
+  padding: 2px;
+  background-color: #373d3f;
+}
+
+.media-playlist-title {
+  font-size: 14px;
+  text-align: center;
+}
+
+.media-playlist {
+  background-color: #282F31;
+  color: #fff;
+}
+
+.media-playlist-tracks {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid #373d3f;
+}
+
+.media-playlist-track {
+  padding: 12px;
+  cursor: pointer;
+
+  & + & {
+    border-top: 1px solid #373d3f;
+  }
+
+  &.is-active {
+    color: #8bb955
+  }
+}
