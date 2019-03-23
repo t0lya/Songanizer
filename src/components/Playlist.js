@@ -26,6 +26,12 @@ const mapStateToProps = (state) => {
 }
 
 class ConnectedPlaylist extends React.Component {
+    constructor(props) {
+        super(props)
+        this.isLoading = false
+        this.initialLoad = true
+    }
+
     componentDidMount() {
         let query = qs.parse(this.props.location.search)
         this.props.loadPlaylist(query.id)
@@ -50,13 +56,18 @@ class ConnectedPlaylist extends React.Component {
                 </ButtonGroup>
                 <InfiniteScroller
                     pageStart={0}
-                    loadMore={(page) => {
-                        this.props.loadPlaylist(
+                    initialLoad={this.initialLoad}
+                    loadMore={async (page) => {
+                        if (this.isLoading === true) return
+                        this.isLoading = true
+                        this.initialLoad = false
+                        await this.props.loadPlaylist(
                             query.id, 
                             this.props.tracks.length > 0 ? this.props.tracks : [], 
                             this.props.nextPageToken)
+                        this.isLoading = false
                     }}
-                    hasMore={this.props.nextPageToken ? true : false}
+                    hasMore={!this.isLoading&&(this.props.nextPageToken ? true : false)}
                     loader={<FontAwesomeIcon className='m-2' icon={faSpinner} pulse/>}>
                     {this.props.tracks.map((item, index, array) => {
                         return (

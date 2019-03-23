@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
     foundItems: [],
-    type: null,
+    type: 'video',
     prevPageToken: null,
     nextPageToken: null,
     query: ''

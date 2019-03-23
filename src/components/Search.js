@@ -60,6 +60,8 @@ const mapStateToProps = (state) => {
 class ConnectedSearch extends React.Component{
     constructor(props) {
         super(props)
+        this.isLoading = false
+        this.initialLoad = true
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -83,14 +85,19 @@ class ConnectedSearch extends React.Component{
               <div>
               <InfiniteScroller
                     pageStart={0}
-                    loadMore={(page) => {
-                        this.props.searchItems(
-                            this.props.type,
-                            this.props.query,
-                            this.props.foundItems ? this.props.foundItems : [], 
-                            this.props.nextPageToken)
+                    initialLoad={this.initialLoad}
+                    loadMore={async (page)=>{
+                      if (this.isLoading === true) return
+                      this.isLoading = true
+                      this.initialLoad = false
+                      await this.props.searchItems(
+                        this.props.type,
+                        this.props.query,
+                        this.props.foundItems.length > 0 ? this.props.foundItems : [], 
+                        this.props.nextPageToken)
+                      this.isLoading = false
                     }}
-                    hasMore={this.props.nextPageToken ? true : false}
+                    hasMore={!this.isLoading && (this.props.nextPageToken ? true : false)}
                     loader={<FontAwesomeIcon key={0} className='m-2' icon={faSpinner} pulse/>}>
                 {this.props.foundItems.map((item, index, array) => {
                   if (this.props.type === 'video') {
