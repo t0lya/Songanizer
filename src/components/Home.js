@@ -4,6 +4,8 @@ import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faSearch, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import { withRouter } from 'react-router-dom'
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL
+
 class Home extends Component {
   render() {
     return (
@@ -20,7 +22,7 @@ class Home extends Component {
           </div>
           <br/>
           <div className='row align-items-center justify-content-start'>
-            <Button className='col-1 btn-sm' href='http://localhost:8080/users/login'>
+            <Button className='col-1 btn-sm' href={SERVER_URL+'/users/login'}>
               <FontAwesomeIcon icon={faSignInAlt}/>
             </Button>
             <span className='col'>Login with your Google Account to save tracks and create playlists.</span>

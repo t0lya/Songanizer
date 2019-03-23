@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { login, logout } from '../actions'
 
 const signupLink = 'https://accounts.google.com/signup/v2/webcreateaccount?hl=en-GB&flowName=GlifWebSignIn&flowEntry=SignUp'
+const SERVER_URL = process.env.REACT_APP_SERVER_URL
 
 const mapStateToProps = (state) => {
     return {
@@ -52,7 +53,7 @@ class ConnectedHeader extends React.Component {
                         <a 
                             rel="noopener noreferrer" 
                             className='btn btn-dark border-white mr-1'
-                            href='http://localhost:8080/users/login'>
+                            href={SERVER_URL+'/users/login'}>
                         Login with Google</a>
                     </li>]
                     ) : (

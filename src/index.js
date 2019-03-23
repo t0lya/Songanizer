@@ -14,6 +14,7 @@ import { Search } from './components/Search'
 import Profile from './components/Profile'
 import Home from './components/Home'
 import MyPlaylist from './components/MyPlaylist'
+import About from './components/About'
 
 ReactDOM.render(
     <BrowserRouter>
@@ -24,6 +25,7 @@ ReactDOM.render(
                 <Route exact path='/profile' component={Auth(Profile)}/>
                 <Route exact path='/playlist' component={Playlist}/>
                 <Route exact path='/my_playlist' component={Auth(MyPlaylist)}/>
+                <Route exact path='/about' component={About}/>
             </App>
         </Provider>
     </BrowserRouter>, document.getElementById('root'))
@@ -31,4 +33,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-//serviceWorker.unregister();
+serviceWorker.unregister();
