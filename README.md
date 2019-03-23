@@ -1,5 +1,7 @@
 Songanizer, a music player web app based on the Youtube API. Web client built using React/Redux; API built using Express/Node/MongoDB. 
 
+### [Live Demo](https://songanizer.net)
+
 ## Running Locally
 
 You will need to setup your Youtube API client at [Google](https://console.developers.google.com).
